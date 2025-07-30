@@ -4,7 +4,6 @@ This is my vehicle parking web app created for my college course project. The ap
 
 Features
 Admin (superuser):
-
 Log in with a fixed username and password (no registration needed).
 
 Add new parking lots (just give name, price, address, pin, and spots).
@@ -18,7 +17,6 @@ See all registered users.
 See each spot’s status (occupied or available).
 
 User:
-
 Can register and log in.
 
 Search for parking lots by location.
@@ -48,7 +46,7 @@ vehicle_parking_app/
 ├── app.py                # The main code file
 ├── requirements.txt      # Stuff to install (Flask, etc.)
 ├── README.md             # This file!
-├── /instance             # Will have app.db after you run the app (no need to add anything yourself)
+├── /instance             # Auto-created app.db after running
 ├── /static
 │   └── /css/style.css    # Your stylesheet
 └── /templates            # All the HTML files
@@ -99,11 +97,11 @@ Database gets created by running app.py, no tools needed.
 
 If you get stuck or see any errors, restart with python app.py.
 
-No manual setup for the database—it's all coded!
+No manual setup for the database — it's all coded!
 
 Possible Improvements
 Could add charts for admin to see usage visually (I didn't finish this).
 
 Some form validation and better error messages would make the app nicer.
 
-Passwords are stored plain text (not secure, but OK for course project).# vehicle_parking-system
+Passwords are stored plain text (not secure, but OK for course project).
