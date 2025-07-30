@@ -1,5 +1,7 @@
 Vehicle Parking App — Student Project
 What is This?
+
+
 This is my vehicle parking web app created for my college course project. The app helps manage parking lots for 4-wheelers, lets users book parking spots, and lets an admin add or remove lots and see everything going on. It’s built with Flask (Python), uses SQLite for storing data, and looks nice thanks to Bootstrap and some custom CSS.
 
 Features
