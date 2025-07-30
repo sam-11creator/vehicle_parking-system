@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Reserve Spot in Lot ID: {{ lot_id }}</h3>
+<form method="post">
+    <div class="mb-3">
+        <label for="vehicle_number" class="form-label">Vehicle Number</label>
+        <input type="text" name="vehicle_number" id="vehicle_number" class="form-control" placeholder="Enter Vehicle Number" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Reserve Spot</button>
+    <a href="{{ url_for('user_dashboard') }}" class="btn btn-secondary ms-2">Cancel</a>
+</form>
+{% endblock %}

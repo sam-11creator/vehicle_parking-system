@@ -1,0 +1,24 @@
+/* style.css */
+
+/* Base body styles */
+body {
+    background-color: #f9f9f9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-bottom: 50px;
+}
+
+/* Navbar overrides */
+.navbar {
+    margin-bottom: 30px;
+}
+
+/* Buttons spacing */
+.btn {
+    margin: 3px 0;
+}
+
+/* Table styling */
+table {
+    background-color: #fff;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}

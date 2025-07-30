@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Search Results for "{{ query }}"</h3>
+{% if results %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Location Name</th>
+            <th>Address</th>
+            <th>Pin Code</th>
+            <th>Price</th>
+            <th>Max Spots</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for lot in results %}
+        <tr>
+            <td>{{ lot['prime_location_name'] }}</td>
+            <td>{{ lot['address'] }}</td>
+            <td>{{ lot['pin_code'] }}</td>
+            <td>{{ lot['price'] }}</td>
+            <td>{{ lot['max_spots'] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No parking lots found matching your query.</p>
+{% endif %}
+<a href="{{ url_for('admin_dashboard') }}" class="btn btn-secondary mt-3">Back to Dashboard</a>
+{% endblock %}

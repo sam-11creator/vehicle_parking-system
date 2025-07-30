@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>User Dashboard</h2>
+
+<h4>Available Parking Lots</h4>
+<table class="table table-bordered table-striped">
+    <thead class="table-info">
+        <tr>
+            <th>Location</th>
+            <th>Address</th>
+            <th>Pin Code</th>
+            <th>Price</th>
+            <th>Reserve Spot</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for lot in lots %}
+        <tr>
+            <td>{{ lot['prime_location_name'] }}</td>
+            <td>{{ lot['address'] }}</td>
+            <td>{{ lot['pin_code'] }}</td>
+            <td>₹{{ lot['price'] }}</td>
+            <td>
+                <a href="{{ url_for('reserve', lot_id=lot['id']) }}" class="btn btn-primary btn-sm">Reserve</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<hr />
+
+<h4>Your Reservations</h4>
+<table class="table table-bordered table-striped">
+    <thead class="table-warning">
+        <tr>
+            <th>Lot</th>
+            <th>Spot Number</th>
+            <th>Vehicle Number</th>
+            <th>Parked At</th>
+            <th>Left At</th>
+            <th>Status</th>
+            <th>Total Cost</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for r in reservations %}
+        <tr>
+            <td>{{ r['prime_location_name'] }}</td>
+            <td>{{ r['spot_number'] }}</td>
+            <td>{{ r['vehicle_number'] }}</td>
+            <td>{{ r['parked_at'] or '-' }}</td>
+            <td>{{ r['left_at'] or '-' }}</td>
+            <td>{{ r['status'].capitalize() }}</td>
+            <td>{% if r['cost'] %}₹{{ r['cost'] }}{% else %}-{% endif %}</td>
+            <td>
+                {% if r['status'] == 'booked' %}
+                    <form method="post" action="{{ url_for('start_parking', reservation_id=r['id']) }}" style="display:inline;">
+                        <button class="btn btn-success btn-sm" type="submit">Start Parking</button>
+                    </form>
+                    <form method="post" action="{{ url_for('release', reservation_id=r['id']) }}" style="display:inline;">
+                        <button class="btn btn-danger btn-sm" type="submit">Cancel</button>
+                    </form>
+                {% elif r['status'] == 'parked' %}
+                    <form method="post" action="{{ url_for('release', reservation_id=r['id']) }}">
+                        <button class="btn btn-warning btn-sm" type="submit">Release Spot</button>
+                    </form>
+                {% else %}
+                    <span class="text-muted">No actions available</span>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+

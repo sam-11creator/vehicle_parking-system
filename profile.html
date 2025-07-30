@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Edit Profile</h3>
+<form method="post">
+    <div class="mb-3">
+        <label class="form-label">Full Name</label>
+        <input type="text" name="fullname" class="form-control" value="{{ user['fullname'] or '' }}">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Contact</label>
+        <input type="text" name="contact" class="form-control" value="{{ user['contact'] or '' }}">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">New Password</label>
+        <input type="password" name="password" class="form-control" placeholder="Leave blank to keep current password">
+    </div>
+    <button type="submit" class="btn btn-primary">Update Profile</button>
+    <a href="{{ url_for('user_dashboard') }}" class="btn btn-secondary ms-2">Cancel</a>
+</form>
+{% endblock %}
